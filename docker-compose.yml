@@ -35,6 +35,24 @@ services:
     volumes:
       - evolution_instances:/evolution/instances
 
+  # >>> AÑADIDO: Caddy para TLS/Reverse Proxy <<<
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - evolution-api
+
 volumes:
   postgres_data:
   evolution_instances:
+  # >>> AÑADIDO: volúmenes de Caddy <<<
+  caddy_data:
+  caddy_config:
