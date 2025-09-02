@@ -1,9 +1,9 @@
 {
-  email admin@xtalento.com.co
+  email info@xtalento.com.co
 }
 
 # Evolution API en el servicio 'evolution-api' (puerto interno 8080)
-https://evo.xtalento.com {
+https://evo.xtalento.com.co {
   encode gzip
   reverse_proxy evolution-api:8080
   log { 
